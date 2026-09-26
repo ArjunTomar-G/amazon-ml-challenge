@@ -1,0 +1,13 @@
+# data and generated artefacts (too large for git; regenerate with the pipeline)
+dataset/
+work/
+output/
+*.zip
+*.parquet
+*.npy
+eda/.cache/
+# python / OS noise
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/

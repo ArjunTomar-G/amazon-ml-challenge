@@ -1,0 +1,345 @@
+{
+ "k": 25,
+ "n_true_pairs": 68931,
+ "n_missed": 1935,
+ "recall": 0.9719284501893197,
+ "categories": {
+  "address empty on S2/S3 side": 0.22945736434108527,
+  "Indic-script name": 0.2682170542635659,
+  "name token-set sim < 0.5": 0.2847545219638243,
+  "address token-set sim < 0.5 (non-empty)": 0.020155038759689922,
+  "name >= 0.8 but lost in ranking": 0.4449612403100775,
+  "address >= 0.8 but lost in ranking": 0.5266149870801033,
+  "both name < 0.5 and (address empty or < 0.5)": 0.006718346253229974
+ },
+ "gt_size_of_missed": {
+  "1": 35,
+  "2": 189,
+  "3": 422,
+  "4": 498,
+  "5": 400,
+  "6": 391
+ },
+ "examples": [
+  {
+   "s1_name": "Williams Motor",
+   "s1_addr": "207 Center Street, Frederick, MD",
+   "m_name": "Williams [[Mobthor]]",
+   "m_addr": "",
+   "name_tset": 0.9333333373069763,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "Urology Care LLC",
+   "s1_addr": "9001 2nd Place, Tucson, AZ",
+   "m_name": "Urology Cre Cre LLC",
+   "m_addr": "",
+   "name_tset": 0.95652174949646,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "Faridabad Publishers Private Limited",
+   "s1_addr": "Faridabad, Sector 17, House No. 438, Haryana, Faridabad",
+   "m_name": "Nylálumlyra",
+   "m_addr": "#433 House No. 438, Faridabad, HR",
+   "name_tset": 0.25806450843811035,
+   "addr_tset": 0.8888888359069824
+  },
+  {
+   "s1_name": "Eastern It LLP",
+   "s1_addr": "D-1201, Sector-37D, Ramprastha The Atrium 0, Garhi Harsaru, Gurgaon, Haryana",
+   "m_name": "Eastern It  LLP",
+   "m_addr": "D-01201, Gurgaon, HR",
+   "name_tset": 1.0,
+   "addr_tset": 0.800000011920929
+  },
+  {
+   "s1_name": "YTY Hotels Corporation",
+   "s1_addr": "C 503, Shree Hari Residency, Nr. Sakar English School, Nr.Sahjanand Villa, New Cg Road, Chandkheda, Ahmedabad, Gujarat",
+   "m_name": "[HOTELS] YTY CORPORATION",
+   "m_addr": "C 503, AHMEDABAD, Gujarat",
+   "name_tset": 1.0,
+   "addr_tset": 1.0
+  },
+  {
+   "s1_name": "Digital Global Pvt Ltd",
+   "s1_addr": "Secunderabad, Hyderabad, Telangana, 6-1-133/4, Padmarao Nagar",
+   "m_name": "డిజిటల్ గ్లోబల్ ప్రైవేట్ లిమిటెడ్",
+   "m_addr": "6-1-133/4, HYDERABAD, తెలంగాణ",
+   "name_tset": 0.44897961616516113,
+   "addr_tset": 0.7916666269302368
+  },
+  {
+   "s1_name": "Houston Chadwick, LLC",
+   "s1_addr": "4218 Center Street, Salamanca, NY",
+   "m_name": "Houston Clhehbadmck, LLC",
+   "m_addr": "",
+   "name_tset": 0.800000011920929,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "Dream Management Pvt Ltd",
+   "s1_addr": "1St Floor, Bl-N, Narendra Nagar, Narayanpur, Rajarhat, North 24 Parganas, West Bengal",
+   "m_name": "ড্রিম ম্যানেজমেন্ট প্রাইভেট লিমিটেড",
+   "m_addr": "1ST- FLOOR, NORTH 24 PARGANAS, null, West Bengal",
+   "name_tset": 0.4363636374473572,
+   "addr_tset": 1.0
+  },
+  {
+   "s1_name": "Shiva Care Limited",
+   "s1_addr": "Naga Chambers, Vishakhapatnam, 3Rd Floor, D/No. 12-1-16, Survey No 1051, Opposite Hdfc Bank Walta, Andhra Pradesh, Vishakhapatnam",
+   "m_name": "Shiva Cbaer Limited",
+   "m_addr": "Naga Chambers, Vishakhapatnam, ఆంధ్రప్రదేశ్",
+   "name_tset": 0.8571428656578064,
+   "addr_tset": 0.800000011920929
+  },
+  {
+   "s1_name": "Atlanta, County Of",
+   "s1_addr": "Atlanta, GA, 736 Brookline Street",
+   "m_name": "Atlanta, Ccuocynt Of",
+   "m_addr": "",
+   "name_tset": 0.800000011920929,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "Future Software Private Limited",
+   "s1_addr": "D-49, Second Floor, Satyawati Colony, Ashok Vihar, Phase-Iii, Delhi, North West, Delhi",
+   "m_name": "फ्यूचर सॉफ्टवेयर प्राइवेट लिमिटेड",
+   "m_addr": "D-49, Delhi, DL",
+   "name_tset": 0.3333333134651184,
+   "addr_tset": 1.0
+  },
+  {
+   "s1_name": "Heartland Fund LLC",
+   "s1_addr": "3104 Leland Avenue, Chicago, IL",
+   "m_name": "Heartland LLC Center",
+   "m_addr": "",
+   "name_tset": 0.7826087474822998,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "Smart Health Alliance PLLC",
+   "s1_addr": "655 Cherry Street, Unit Apartment 2, Saint Paul, MN",
+   "m_name": "Smart Health PLLC Center",
+   "m_addr": "Saint PUAL, Minnesota, # Apartment 2, Cherry St",
+   "name_tset": 0.7741935849189758,
+   "addr_tset": 0.875
+  },
+  {
+   "s1_name": "Ridgeline",
+   "s1_addr": "3146 12th Avenue, Port Arthur, TX",
+   "m_name": "Ridelhegn",
+   "m_addr": "3146 Tweltfh Avenue, PT Arthur, Texas",
+   "name_tset": 0.6666666269302368,
+   "addr_tset": 0.7777777910232544
+  },
+  {
+   "s1_name": "My Services Pvt Ltd",
+   "s1_addr": "F-67, 1St Floor, Haware Fantasia Opp.Vashi Railway Station, Sec-30A, Vashi, Mumbai, Thane, Maharashtra",
+   "m_name": "My Services Pvt Limited",
+   "m_addr": "Hn 291 F-67, Mumbai, MH",
+   "name_tset": 1.0,
+   "addr_tset": 0.800000011920929
+  },
+  {
+   "s1_name": "Pediatric Health Inc",
+   "s1_addr": "7124 11th Drive, Phoenix, AZ",
+   "m_name": "PEDIATRIC HEALTH INC",
+   "m_addr": "Washington, Arizona, 124 11th Dr",
+   "name_tset": 1.0,
+   "addr_tset": 0.6666666269302368
+  },
+  {
+   "s1_name": "Seven Consulting Private Limited",
+   "s1_addr": "H No - 5-5-38/1, Prakash Nagar, Tirumalagiri, Hyderabad, Telangana",
+   "m_name": "Seven Private Limited Service",
+   "m_addr": "Hyderabad, No. 13 H No - 5-5-38/1, TG, Hyderabad",
+   "name_tset": 0.5555555820465088,
+   "addr_tset": 0.8421052694320679
+  },
+  {
+   "s1_name": "Urology Care LLC",
+   "s1_addr": "217 Indian Lake Boulevard, Unit 950, Hendersonville, TN",
+   "m_name": "urologycare.com",
+   "m_addr": "17 Indian Lake Blvd, HENDERSONVILLE, TN",
+   "name_tset": 0.6086956262588501,
+   "addr_tset": 0.950819730758667
+  },
+  {
+   "s1_name": "My Services Pvt Ltd",
+   "s1_addr": "F-67, 1St Floor, Haware Fantasia Opp.Vashi Railway Station, Sec-30A, Vashi, Mumbai, Thane, Maharashtra",
+   "m_name": "माय सर्विसेज प्रा. लि.",
+   "m_addr": "Hn 291 F-67, महाराष्ट्र, Thane",
+   "name_tset": 0.5161290168762207,
+   "addr_tset": 0.5102040767669678
+  },
+  {
+   "s1_name": "Tirupati Solutions LLP",
+   "s1_addr": "B - 302, Raj Pipla Building, Main Avenue Off Linking Road, Santacruz, Mumbai, Mumbai City, Maharashtra",
+   "m_name": "तिरुपति सॉल्यूशंस एलएलपी",
+   "m_addr": "B - 302, GREATER BOMBAY, MUMBAI CITY, Maharashtra",
+   "name_tset": 0.6222221851348877,
+   "addr_tset": 0.7272727489471436
+  },
+  {
+   "s1_name": "Mckee Integrated, Inc",
+   "s1_addr": "1186 Lancer Drive, Amherst, OH",
+   "m_name": "MCKEE INC SERVICE",
+   "m_addr": "",
+   "name_tset": 0.6206896305084229,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "United Healthcare LLP",
+   "s1_addr": "Block-A, 11Th Floor, Dlf-It Park New Town, Rajarhat, West Bengal, Kolkata, Howrah",
+   "m_name": "Smt United-Healthcare",
+   "m_addr": "Block-a, Howrah, Calcutta, WB",
+   "name_tset": 1.0,
+   "addr_tset": 0.7096774578094482
+  },
+  {
+   "s1_name": "Urban Constructions Private Limited",
+   "s1_addr": "Bungalow No 27, Aram Nagar 1, Jp Road, Seven Bungalows, Versova, Andheri, (West), Mumbai, Maharashtra",
+   "m_name": "अर्बन कंस्ट्रक्शंस प्राइवेट लिमिटेड",
+   "m_addr": "Plot 885 Bungalow No 27, Mumbai (SUBURBAN), महाराष्ट्र",
+   "name_tset": 0.3272727131843567,
+   "addr_tset": 0.5806452035903931
+  },
+  {
+   "s1_name": "Ace Management Private Limited",
+   "s1_addr": "Nl-6/7, Flat No.14, Bridge View Apts, Sector -2, Nerul, Navi Mumbai, Mumbai City, Maharashtra",
+   "m_name": "एस मैनेजमेंट प्राइवेट लिमिटेड",
+   "m_addr": "Mumbai City, MH, New Bombay, Nl-6/7",
+   "name_tset": 0.4166666865348816,
+   "addr_tset": 0.792452871799469
+  },
+  {
+   "s1_name": "International Constructions LLP",
+   "s1_addr": "Poddar Court9Th Floor, Kolkata, Calcutta, West Bengal",
+   "m_name": "internationalconstructions.com",
+   "m_addr": "Poddar Courtth Floor, Kolkata, Calcutta, WB",
+   "name_tset": 0.5283018946647644,
+   "addr_tset": 0.9855072498321533
+  },
+  {
+   "s1_name": "Sree Trading Private Limited",
+   "s1_addr": "D. No. 3-3-92, Doctor Street, Karimnagar, Karimnagar, Karim Nagar, Telangana",
+   "m_name": "Sree Trading Private  Limited Enterprises",
+   "m_addr": "",
+   "name_tset": 1.0,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "New Delhi Marketing Private Limited",
+   "s1_addr": "Delhi, New Delhi, Lower Ground Floor, Green Park Main, South West Delhi, F-35",
+   "m_name": "Gildmira",
+   "m_addr": "SOUTH WEST DELHI, दिल्ली, F-35., NEW DELHI",
+   "name_tset": 0.2222222089767456,
+   "addr_tset": 0.800000011920929
+  },
+  {
+   "s1_name": "Uptown Cleaning Service",
+   "s1_addr": "908 20th Avenue Place, Hickory, NC",
+   "m_name": "-- @uptowncleaning",
+   "m_addr": "0908 20th Avenue Pl, Hickory CDP, North Carolina",
+   "name_tset": 0.4324324429035187,
+   "addr_tset": 0.8717948794364929
+  },
+  {
+   "s1_name": "Silver Grand Advisors Inc",
+   "s1_addr": "1506 Fairfax Avenue, Piqua, OH",
+   "m_name": "Silver Grand Adivsbrs Inc",
+   "m_addr": "",
+   "name_tset": 0.9047619104385376,
+   "addr_tset": 0.0
+  },
+  {
+   "s1_name": "Lucknow Drive Pvt Ltd",
+   "s1_addr": "E-656, Sector M1, Ashiyana Coloney Kanpur Road, Lucknow, Uttar Pradesh",
+   "m_name": "Luckn0w Pvt Ltd Services",
+   "m_addr": "E-656/2, Lucknow, UP",
+   "name_tset": 0.4137931168079376,
+   "addr_tset": 0.9333333373069763
+  },
+  {
+   "s1_name": "Historical Committee of Staten Island V",
+   "s1_addr": "109 Benedict Avenue, Staten Island, NY",
+   "m_name": "HCV",
+   "m_addr": "109 Benedict Avenue, Staten Island, NY",
+   "name_tset": 0.1538461446762085,
+   "addr_tset": 1.0
+  },
+  {
+   "s1_name": "Oleary & Brown Law Group PLLC",
+   "s1_addr": "2516 13th Avenue, Seattle, WA",
+   "m_name": "Halocira",
+   "m_addr": "2516  THIRTEENTH AVENUE, SEATTLE, WA",
+   "name_tset": 0.20000000298023224,
+   "addr_tset": 1.0
+  },
+  {
+   "s1_name": "Green Brothers Ltd",
+   "s1_addr": "7Th Floor, Welspun House, Kamala Mills Compound, Mumbai, Maharashtra",
+   "m_name": "Green [Brothers]",
+   "m_addr": "#7Th Floor, Mumbai, महाराष्ट्र",
+   "name_tset": 1.0,
+   "addr_tset": 0.5517241358757019
+  },
+  {
+   "s1_name": "Family Fresh Partners Corporation",
+   "s1_addr": "313 Park Avenue, Lewes, DE",
+   "m_name": "freshpartners.com",
+   "m_addr": "Park Ave, Lewes, Delaware",
+   "name_tset": 0.7647058963775635,
+   "addr_tset": 1.0
+  },
+  {
+   "s1_name": "Tech All Investment Private Limited",
+   "s1_addr": "First Floor, Office No 106, Four Plus Complex, Sardar Nagar Main Road, Astron Chowk, Rajkot, Gujarat",
+   "m_name": "ટેક ઓલ ઇન્વેસ્ટમેન્ટ પ્રાઇવેટ લિમિટેડ",
+   "m_addr": "RAJKOT, HN 408 FIRST FLOOR, RAJKOT, Gujarat",
+   "name_tset": 0.4406779408454895,
+   "addr_tset": 0.7586206793785095
+  },
+  {
+   "s1_name": "Department of Veterans Affairs Group",
+   "s1_addr": "42 Peachtree Court, Brookhaven, NY",
+   "m_name": "Departmentveteransaffairs.Com",
+   "m_addr": "33 Peachtree Ct, Brookhaven, New York",
+   "name_tset": 0.6206896305084229,
+   "addr_tset": 0.9387754797935486
+  },
+  {
+   "s1_name": "Balaji Consultants Private Limited",
+   "s1_addr": "Howrah, Kolkata, Chowranghee Rd, West Bengal, 33B",
+   "m_name": "bcprivate.c0m",
+   "m_addr": "C-33b, Kolkata, WB",
+   "name_tset": 0.25806450843811035,
+   "addr_tset": 1.0
+  },
+  {
+   "s1_name": "Kapila & Co",
+   "s1_addr": "1354P, Jharsa Road Sector 31 32A, Gurugram, Gurgaon, Haryana",
+   "m_name": "Có & Kapi1a",
+   "m_addr": "East Delhi, 1354P, Gurgaon, HR",
+   "name_tset": 0.8333333730697632,
+   "addr_tset": 0.8421052694320679
+  },
+  {
+   "s1_name": "Sai Industries LLP",
+   "s1_addr": "No. 83, 3Rd Main, 4Th Phase Dollars Colony, J. P Nagar, Bangalore, Karnataka",
+   "m_name": "ಸಾಯಿ ಇಂಡಸ್ಟ್ರೀಸ್ ಎಲ್ಎಲ್‌ಪಿ",
+   "m_addr": "BANGALORE, BENGALURU URBAN, ###83, Karnataka",
+   "name_tset": 0.6315789222717285,
+   "addr_tset": 0.6521739363670349
+  },
+  {
+   "s1_name": "Bangalore Consulting Private Limited",
+   "s1_addr": "House No 269, 1St Floor Khb Colony Near Ganesh Temple 5Th Block Koramangala, Bangalore, Karnataka",
+   "m_name": "Bangalore Consulting Private Ltd #69816",
+   "m_addr": "Hn 462 House No 269, Bangalore, Bengaluru, KA",
+   "name_tset": 1.0,
+   "addr_tset": 0.6530612111091614
+  }
+ ]
+}
