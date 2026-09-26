@@ -31,7 +31,7 @@ import time
 
 import numpy as np
 
-import v1path
+import paths
 
 
 def log(*a):
@@ -47,7 +47,7 @@ def main():
     ap.add_argument("--lo", type=float, default=0.1)
     ap.add_argument("--threads", type=int, default=16)
     a = ap.parse_args()
-    v1path.use(work_dir=a.work_dir)
+    paths.use(work_dir=a.work_dir)
 
     import lightgbm as lgb
     import polars as pl

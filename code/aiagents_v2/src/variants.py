@@ -34,7 +34,7 @@ import time
 
 import numpy as np
 
-import v1path
+import paths
 
 DEFAULT = ["v1", "guard0.3", "lower_only", "emhalf", "unseen_thr0.8", "unseen_thr0.9"]
 
@@ -71,7 +71,7 @@ def main():
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--variants", nargs="*", default=DEFAULT)
     a = ap.parse_args()
-    v1path.use(work_dir=a.work_dir)
+    paths.use(work_dir=a.work_dir)
 
     from pathlib import Path
 

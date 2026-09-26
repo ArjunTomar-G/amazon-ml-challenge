@@ -1,8 +1,31 @@
-# AIAgents v2 — test-like training, France remedies, decision variants
+# AIAgents v2 — standalone pipeline: test-like training, France remedies, decision variants
 
-Add-on tools for the team pipeline in [`../aiagents_v1`](../aiagents_v1) (the submission that
-scored **0.97 on the public leaderboard**, 0.9906 on its own validation). v1 is kept
-byte-for-byte unchanged; every script here imports it and writes only new files.
+Built on the method of [`../aiagents_v1`](../aiagents_v1) (the submission that scored **0.97 on
+the public leaderboard**, 0.9906 on its own validation). v2 is **self-contained**: `src/` holds its
+own copy of every pipeline module, nothing is imported from `aiagents_v1`, and `run_v2.py` always
+trains from a fresh, empty work dir (no cached normalisation, candidates, features or models from
+an earlier run are reused). v1 itself is kept unchanged as the reference.
+
+## Run it (one command, fresh start)
+
+```bash
+pip install -r requirements.txt
+python src/run_v2.py --data-dir <student_resource/dataset> --work-dir <NEW empty dir> --out-dir <out> --selftrain
+```
+It writes `<out>/matching_results.tsv` + `<out>/candidate_pairs.tsv` (the models trained on test-like
+data with the decision rule chosen on the test-like validation fold), and `<out>/variants/<name>/`
+for leaderboard comparison: `unseen_thr0.8`, `unseen_thr0.9` (stricter rule for France), `st`,
+`st+unseen_thr0.9` (self-trained France). An interrupted run resumes with `--from <step>` on the
+same work dir. Needs ~24 GB RAM, ~50 GB disk and about 4–5 h on the v1 reference machine (estimate).
+
+**Fix since the first v2 version (important if you ran it before):** `augment.py` used to create
+some synthetic siblings at the entity's *own* address — 20 % in the US and 59 % in India, whenever
+the entity had no house number or the sampled shift was 0. They differ from a true record only by
+an added or replaced word, which is ordinary generator noise, so the model learned to reject true
+matches. Now every synthetic sibling gets an upward shift of at least 1 (`--min-shift 1`), and
+entities without a house number are not used as bases. On the 3 % slice, the retrained models now
+match v1 on the original validation fold (0.9937 vs 0.9943; the flawed data gave 0.9925), and score
+0.9937 on the test-like fold where v1 models score 0.974.
 
 ## What is wrong with v1 (measured on the data, no test labels needed)
 
@@ -26,19 +49,20 @@ byte-for-byte unchanged; every script here imports it and writes only new files.
 3. The smaller signals are fine: records without address, exact-name matches and recall per
    entity are close to the training ground truth in all three countries.
 
-On the same slice, **v1 models score 0.916 on the augmented (test-like) validation** and
-0.994 on the original one. Models retrained on augmented data score 0.991 / 0.992. (The slice was
-augmented much more heavily than the test density, so expect a smaller gap on the full data.)
+On the same slice (fixed augmentation, heavier than test density): **v1 models score 0.974 on the
+test-like validation fold** and 0.994 on the original one; models trained by `run_v2.py` score
+0.994 / 0.994.
 
 ## Tools
 
 | script | needs | what it does |
 |---|---|---|
+| `run_v2.py` | the dataset folder | the whole v2 pipeline from a fresh start (see above) |
 | `audit.py` | test TSVs + any `matching_results.tsv` | label-free per-country statistics (matches / entity, empty share, up- vs down-shifted house numbers → estimated sibling merges); `--compare` profiles the pairs two files disagree on; `--train-dir` adds the ground-truth baseline |
-| `variants.py` | a finished v1 work dir | decision variants without retraining; writes `variants/<name>/matching_results.tsv` + `variants_report.json`; the `v1` variant reproduces the submitted file exactly |
-| `loco_full.py` | a finished v1 work dir | leave-one-country-out through the whole pipeline; scores the held-out country with the rule it would get in production, plus EM and (`--selftrain`) self-training remedies |
-| `selftrain.py` | a finished v1 work dir | one round of cross-fitted self-training for the unlabelled test country (France); US / India probabilities stay exactly v1; writes `feat/test_p{1,2}_st.npy` |
-| `augment.py` | the dataset folder | writes a copy of the data whose **training** Source-2/3 files contain synthetic sibling groups at test density (Source 1, labels and test files unchanged); run v1 on it unchanged |
+| `variants.py` | a finished work dir | decision variants without retraining; writes `variants/<name>/matching_results.tsv` + `variants_report.json`; the `v1` variant reproduces the run's own `output` file exactly |
+| `loco_full.py` | a finished work dir | leave-one-country-out through the whole pipeline; scores the held-out country with the rule it would get in production, plus EM and (`--selftrain`) self-training remedies |
+| `selftrain.py` | a finished work dir | one round of cross-fitted self-training for the unlabelled test country (France); US / India probabilities stay unchanged; writes `feat/test_p{1,2}_st.npy` |
+| `augment.py` | the dataset folder | writes a copy of the data whose **training** Source-2/3 files contain synthetic sibling groups at test density (Source 1, labels and test files unchanged); step 1 of `run_v2.py` |
 | `crosseval.py` | two work dirs | scores one run's models on another run's validation fold (old models on the test-like fold = offline estimate of the leaderboard) |
 | `probe.py` | test TSVs + a `matching_results.tsv` | leaderboard probe: blanks one country; the score drop gives that country's real F0.5 (±0.01) |
 | `make_mini.py` | the dataset folder | 3 % structure-preserving slice for quick smoke tests |
@@ -53,64 +77,29 @@ augmented much more heavily than the test density, so expect a smaller gap on th
 Learned from the training data only (`augment_stats.json` records everything):
 - **Exemplars.** Unmatched records on the same street as a Source-1 entity, with a house number
   0–30 above it and a similar name. The learned shift distribution is +1…+5, +7, +9, +11, +13,
-  +21 (US; India also 40 % unshifted), plus the name edits: added word (Northside, Holdings,
+  +21 (US). India exemplars are 40 % unshifted, but only shifts >= `--min-shift` (1) are used
+  for synthetic siblings, see the fix above. Also learned: the name edits: added word (Northside, Holdings,
   Infratech…), replaced word, legal-form change (59 % of US siblings).
 - **Groups.** A random entity's own true records (which already carry the real generator's noise)
   are used as templates for 1–3 records. One sampled edit and shift is applied identically to all
   of them, giving a group of noisy records of one sibling business.
 - **Density.** Enough groups are added per country to reach `--target-unmatched` (default 0.37).
 
-## Run order (on the machine that has the v1 work dir from the 0.97 run)
-
-`V1WORK` = that work dir (must contain `feat/` and `models/`), `DATA` = `student_resource/dataset`.
-Times are estimates for the v1 reference machine (12 cores, 24 GB). The tools were smoke-tested
-end-to-end on the 3 % slice, not on the full data.
+## Tools on a finished run (`WORK` = a work dir created by `run_v2.py`)
 
 ```bash
-cd code/aiagents_v2/src
+cd src
+python audit.py --test-dir $DATA/test --train-dir $DATA/train --matching <out>/matching_results.tsv
+python loco_full.py --work-dir $WORK --source US --target India --selftrain   # France simulation, ~2 h
+python variants.py --work-dir $WORK --out-dir <out> --variants v1 unseen_thr0.9 emhalf
+python probe.py --test-dir $DATA/test --matching <file> --country France --out probe_fr.tsv
 ```
+In `models/loco_full_*.json`: `target_loco` / `target_loco_em` / `selftrain.target` versus
+`target_full_model_v1_rule` is the cost of having no labels; `target_oracle_rule` shows which rule an
+unlabelled country really wants. `crosseval.py --model-work A --data-work B` compares two finished runs.
 
-**1. Quick variants from the existing run (~15 min, no training)**
-```bash
-python variants.py --work-dir $V1WORK --out-dir ../out/v1_variants \
-  --variants v1 unseen_thr0.8 unseen_thr0.9 emhalf guard0.3
-python audit.py --test-dir $DATA/test --train-dir $DATA/train \
-  --matching ../out/v1_variants/variants/unseen_thr0.9/matching_results.tsv \
-  --compare  ../out/v1_variants/variants/v1/matching_results.tsv
-```
-Submit `unseen_thr0.9` first: it only changes France.
-
-**2. Measure the France problem and pick its remedy (~2 h each direction)**
-```bash
-python loco_full.py --work-dir $V1WORK --source US --target India --selftrain
-python loco_full.py --work-dir $V1WORK --source India --target US --selftrain
-```
-In `models/loco_full_*.json`, compare `target_loco`, `target_loco_em` and `selftrain.target`
-against `target_full_model_v1_rule` (the cost of having no labels), and `target_oracle_rule`
-(which rule the unlabelled country really wants). If the oracle is a stricter threshold in both
-directions, use that threshold for France (`unseen_thr<t>`).
-
-**3. Self-train France (~1.5 h)**
-```bash
-python selftrain.py --work-dir $V1WORK
-python variants.py --work-dir $V1WORK --out-dir ../out/v1_variants --variants v1 st st+unseen_thr0.9
-```
-
-**4. Test-like training data + full retrain (~4 h, ~50 GB free disk)**
-```bash
-python augment.py --data-dir $DATA --out-dir $DATA_AUG
-python ../../aiagents_v1/src/run_pipeline.py --data-dir $DATA_AUG --work-dir $AUGWORK --out-dir ../out/aug
-python crosseval.py --model-work $V1WORK --data-work $AUGWORK   # old models on the test-like fold
-python crosseval.py --model-work $AUGWORK --data-work $V1WORK   # new models on the original fold
-```
-The first `crosseval` is the offline leaderboard estimate. If it lands near 0.97, the augmented
-validation is a faithful proxy, and the new run's own validation (`$AUGWORK/models/decision.json`)
-is the number to trust. If it is far off, adjust `--target-unmatched` / `--group-sizes` and repeat.
-Then run steps 3 and 1 with `--work-dir $AUGWORK` and submit the best variant.
-
-The official validator still applies to every file:
+Every file must pass the official validator:
 `python utils/validate_submission.py --matching <file> --candidate <out>/candidate_pairs.tsv --test-dir dataset/test`
-(`variants.py` writes `candidate_pairs.tsv` once, next to `variants/`).
 
 ## Where the rest of the gap is (toward 0.99+)
 

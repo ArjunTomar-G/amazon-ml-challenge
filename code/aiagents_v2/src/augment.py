@@ -194,7 +194,7 @@ def _cased(word: str, like: str) -> str:
 class Edit:
     """One sampled sibling edit, applied identically to every record of a group."""
 
-    def __init__(self, rng, st: dict, base_name: str):
+    def __init__(self, rng, st: dict, base_name: str, min_shift: int = 1):
         ops = st["ops"]
         names = [o for o in ("add", "replace", "drop", "none") if ops.get(o)]
         w = np.array([ops[o] for o in names], float)
@@ -215,7 +215,7 @@ class Edit:
             q = np.array([st["legal_swaps"][x] for x in sw], float)
             self.legal = sw[rng.choice(len(sw), p=q / q.sum())].split(">")
         sh = st["shift"]
-        ks = [int(k) for k in sh]
+        ks = [int(k) for k in sh if int(k) >= min_shift]
         v = np.array([sh[str(k)] for k in ks], float)
         self.shift = ks[rng.choice(len(ks), p=v / v.sum())]
 
@@ -297,6 +297,10 @@ def main():
     ap.add_argument("--group-sizes", type=float, nargs=3, default=[0.35, 0.55, 0.10],
                     help="probabilities of synthetic sibling groups with 1 / 2 / 3 records")
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--min-shift", type=int, default=1,
+                    help="smallest house-number shift of a synthetic sibling (default 1). 0 reproduces the "
+                         "first version, which also made siblings at the entity's own address - they look "
+                         "exactly like true records with generator noise and taught the model to reject them")
     a = ap.parse_args()
     rng = np.random.default_rng(a.seed)
     tr_in, tr_out = os.path.join(a.data_dir, "train"), os.path.join(a.out_dir, "train")
@@ -332,6 +336,9 @@ def main():
         n_c, u_c = int(in_c.sum()), int((in_c & ~matched.to_numpy()).sum())
         need = max(0, int((a.target_unmatched * n_c - u_c) / (1 - a.target_unmatched)))
         bases = by_entity.index[base_info.loc[by_entity.index, "country"].to_numpy() == country]
+        if a.min_shift > 0:
+            has_hn = np.array([first_number(x) is not None for x in base_info.loc[bases, "addr"]])
+            bases = bases[has_hn]
         if need == 0 or len(bases) == 0 or st["n_exemplars"] < 100:
             log(f"[{country}] nothing to add (need {need}, exemplars {st['n_exemplars']})")
             continue
@@ -341,10 +348,12 @@ def main():
         made, groups, failed = 0, collections.Counter(), 0
         for e, k in zip(pick, sizes):
             b = base_info.loc[e]
-            edit = Edit(rng, st, b["name"])
+            base_hn = first_number(b["addr"])
+            if base_hn is None and a.min_shift > 0:
+                continue          # no house number to shift: the sibling would sit at the true address
+            edit = Edit(rng, st, b["name"], a.min_shift)
             tmpl = by_entity[e]
             tmpl = [tmpl[i] for i in rng.permutation(len(tmpl))[:k]]
-            base_hn = first_number(b["addr"])
             got = 0
             for rid in tmpl:
                 r = rec.loc[rid]

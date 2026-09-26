@@ -24,7 +24,7 @@ from pathlib import Path
 
 import numpy as np
 
-import v1path
+import paths
 
 
 def log(*a):
@@ -37,7 +37,7 @@ def main():
     ap.add_argument("--data-work", required=True, help="work dir whose validation universe is used")
     ap.add_argument("--threads", type=int, default=16)
     a = ap.parse_args()
-    v1path.use(work_dir=a.data_work)
+    paths.use(work_dir=a.data_work)
 
     import lightgbm as lgb
     import polars as pl

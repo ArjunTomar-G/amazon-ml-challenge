@@ -6,7 +6,7 @@ The challenge statement is in [`CHALLENGE.md`](CHALLENGE.md).
 | Folder | What it is |
 |---|---|
 | [`code/aiagents_v1/`](code/aiagents_v1) | **Team pipeline as submitted** (public leaderboard 0.97, validation 0.9906), unchanged — the base to build on |
-| [`code/aiagents_v2/`](code/aiagents_v2) | **Improvements on top of v1**: test-like training data, France (unlabelled country) remedies, decision variants, label-free audit — see its README for findings and run order |
+| [`code/aiagents_v2/`](code/aiagents_v2) | **Standalone v2 pipeline** (own copy of the code, trains from a fresh start with `src/run_v2.py`): test-like training data, France (unlabelled country) remedies, decision variants, label-free audit — see its README |
 | [`code/business_entity_resolution/`](code/business_entity_resolution) | Our first pipeline (validation 0.957), superseded by v1; kept for reference |
 | [`eda/`](eda) | Exploratory analysis: data profiling, blocking-strategy comparison, similarity-feature study ([`eda/REPORT.md`](eda/REPORT.md)) |
 | [`utils/validate_submission.py`](utils/validate_submission.py) | Official format validator |
@@ -14,8 +14,8 @@ The challenge statement is in [`CHALLENGE.md`](CHALLENGE.md).
 
 ## Quick start (teammates)
 
-For the current team pipeline use [`code/aiagents_v1`](code/aiagents_v1) and the steps in
-[`code/aiagents_v2/README.md`](code/aiagents_v2/README.md). The commands below run our first
+For the current team pipeline run `code/aiagents_v2/src/run_v2.py` (see
+[`code/aiagents_v2/README.md`](code/aiagents_v2/README.md)). The commands below run our first
 (superseded) pipeline.
 
 ```bash
