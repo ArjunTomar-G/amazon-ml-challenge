@@ -40,6 +40,7 @@ augmented much more heavily than the test density, so expect a smaller gap on th
 | `selftrain.py` | a finished v1 work dir | one round of cross-fitted self-training for the unlabelled test country (France); US / India probabilities stay exactly v1; writes `feat/test_p{1,2}_st.npy` |
 | `augment.py` | the dataset folder | writes a copy of the data whose **training** Source-2/3 files contain synthetic sibling groups at test density (Source 1, labels and test files unchanged); run v1 on it unchanged |
 | `crosseval.py` | two work dirs | scores one run's models on another run's validation fold (old models on the test-like fold = offline estimate of the leaderboard) |
+| `probe.py` | test TSVs + a `matching_results.tsv` | leaderboard probe: blanks one country; the score drop gives that country's real F0.5 (±0.01) |
 | `make_mini.py` | the dataset folder | 3 % structure-preserving slice for quick smoke tests |
 
 ### Variant grammar (`variants.py --variants ...`)
@@ -110,3 +111,32 @@ Then run steps 3 and 1 with `--work-dir $AUGWORK` and submit the best variant.
 The official validator still applies to every file:
 `python utils/validate_submission.py --matching <file> --candidate <out>/candidate_pairs.tsv --test-dir dataset/test`
 (`variants.py` writes `candidate_pairs.tsv` once, next to `variants/`).
+
+## Where the rest of the gap is (toward 0.99+)
+
+- **US / India.** Beyond the training ground-truth rates, v1's test predictions have about 7 k (US)
+  + 7 k (India) extra pairs with a sibling-style shift (+1…5, 7, 9, 11, 13, 21), worth only
+  ~0.15 F0.5 in total. If those two countries score ~0.988, the 0.97 leaderboard score implies
+  **France ≈ 0.87**. Measure it before investing:
+  ```bash
+  python probe.py --test-dir $DATA/test --matching <v1 matching_results.tsv> --country France --out probe_fr.tsv
+  # submit probe_fr.tsv, then:
+  python probe.py --test-dir $DATA/test --matching <v1 file> --country France --lb-original 0.970 --lb-probe <score>
+  ```
+- **France is structurally different.** Names follow a `<City> <Word> <legal form>` template
+  (34 % of names shared by several entities). There are 9.3 entities per street name against
+  2.9 in the US, and 78 % of French entities sit on streets with ≥ 10 businesses. A house-number
+  typo or a sibling's +d shift often lands on another real entity. Ideas, in order of expected value:
+  1. **French pseudo-training universe:** add test France (pseudo-labelled by the current best
+     model) as an extra training universe, *and* run `augment.py`-style sibling mining on it. The
+     exemplar miner needs only Source 1 + unassigned records, so France's own sibling edits
+     (Distribution, Développement, Holding, legal swaps) are learned without labels. Iterate
+     2–3 rounds.
+  2. **Occupied-number features:** does the record's house number (or ±1 digit edit) belong to
+     *another* Source-1 entity on the same street? How many entities sit within ±13 numbers? These
+     are label-free universe statistics that transfer to dense streets. They need a feature change
+     in v1's `features.py` and a full rerun.
+  3. **Cluster-level decisions:** group each entity's candidates into businesses (same shifted
+     number + same name edit) and accept or reject whole clusters. Train it on the augmented data.
+- **Small, safe gains:** 3–5 seeds of stage 2 averaged (~+0.0005); a per-country λ of the
+  expected-F0.5 rule chosen on the augmented validation.
