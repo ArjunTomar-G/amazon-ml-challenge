@@ -1,0 +1,10 @@
+# Python 3.12 (tested on 3.12.4, Windows 11, 16 threads, 24 GB RAM)
+# All libraries are permissively licensed (MIT / Apache-2.0 / BSD / ISC).
+numpy==1.26.4          # BSD-3
+polars==1.44.2         # MIT
+pyarrow==25.0.1        # Apache-2.0
+numba==0.67.0          # BSD-2
+llvmlite==0.49.0       # BSD-2
+rapidfuzz==3.14.6      # MIT
+lightgbm==4.7.0        # MIT   (the matching model; gradient-boosted trees, far below 8B parameters)
+anyascii==0.3.3        # ISC   (fallback romanisation of unseen Indic tokens)

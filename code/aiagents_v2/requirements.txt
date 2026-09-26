@@ -1,0 +1,2 @@
+-r ../aiagents_v1/requirements.txt
+pandas==2.2.2          # BSD-3 (augment.py, audit.py, make_mini.py)

@@ -26,7 +26,7 @@ environment variables `BER_DATA`, `BER_WORK`, `BER_OUT`.
 |---|---|---|---|
 | normalise train / test (first run only, cached) | `work/{train,test}_s{1,2,3}.parquet` | ~3 + 5 min | < 1 GB |
 | `train.py` (150k + 50k Source-1 entities → 7.2M labelled pairs) | `work/model.txt`, `model_config.json` | ~22 min (LightGBM ~12 of it) | ~4 GB |
-| `predict.py` (1.73M test entities, ~36 candidates each) | `output/matching_results.tsv`, `output/candidate_pairs.tsv` | ~1 h 45 min | ~3.5 GB |
+| `predict.py` (1.73M test entities, ~36 candidates each) | `output/matching_results.tsv`, `output/candidate_pairs.tsv` | ~1 h 45 min (projected from a partial run, never measured end-to-end) | ~3.5 GB |
 
 *Measured on a MacBook Air M1, 8 GB RAM, 8 threads. More cores help almost linearly
 (numba kernels and LightGBM are multi-threaded; set `--threads`). If memory is

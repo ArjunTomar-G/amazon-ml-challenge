@@ -5,12 +5,18 @@ The challenge statement is in [`CHALLENGE.md`](CHALLENGE.md).
 
 | Folder | What it is |
 |---|---|
-| [`code/business_entity_resolution/`](code/business_entity_resolution) | **Final pipeline**: training + test prediction → `output/matching_results.tsv` and `output/candidate_pairs.tsv` |
+| [`code/aiagents_v1/`](code/aiagents_v1) | **Team pipeline as submitted** (public leaderboard 0.97, validation 0.9906), unchanged — the base to build on |
+| [`code/aiagents_v2/`](code/aiagents_v2) | **Improvements on top of v1**: test-like training data, France (unlabelled country) remedies, decision variants, label-free audit — see its README for findings and run order |
+| [`code/business_entity_resolution/`](code/business_entity_resolution) | Our first pipeline (validation 0.957), superseded by v1; kept for reference |
 | [`eda/`](eda) | Exploratory analysis: data profiling, blocking-strategy comparison, similarity-feature study ([`eda/REPORT.md`](eda/REPORT.md)) |
 | [`utils/validate_submission.py`](utils/validate_submission.py) | Official format validator |
 | [`Documentation_template.md`](Documentation_template.md) | Methodology write-up (to fill in for the submission zip) |
 
 ## Quick start (teammates)
+
+For the current team pipeline use [`code/aiagents_v1`](code/aiagents_v1) and the steps in
+[`code/aiagents_v2/README.md`](code/aiagents_v2/README.md). The commands below run our first
+(superseded) pipeline.
 
 ```bash
 # 1. put the challenge data here (not in git):
