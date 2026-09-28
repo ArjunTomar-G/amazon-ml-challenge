@@ -1,0 +1,19 @@
+17:26:00 cross-encoder logits train_val_logit: 2 variant(s)
+[..] stacker features: 874706 band pairs
+[ok] stacker features: 874706 band pairs  (14.2s)
+17:26:17 stacker features: 80 (extra cross-encoders: ['b'])
+17:26:17 stacker: 258231 V band pairs (0.287 true), 616475 pairs of V records with A/B entities
+17:32:43 stacker importance: [('pf', 656832), ('lpf', 572955), ('ce_b', 312954), ('p_minus_qmax_other', 69564), ('ce', 40669), ('ce_b_gap', 31842), ('p_rank', 28181), ('p_best_other', 23140), ('n_band', 13528), ('ce_gap', 13023), ('e_pmax_other', 8295), ('q_psecond', 8171), ('p1', 7456), ('q_pmax', 6289), ('at_idf_eun', 4737), ('e_alen', 4471), ('nt_idf_match', 4464), ('ce_rank', 4198), ('ce_b_rank', 3705), ('ret_r_all', 3579), ('e_nlen', 2977), ('e_rank', 2967), ('q_nlen', 2830), ('q_n', 2805), ('rf_nall_tset', 2495), ('nt_idf_eun', 2336), ('rf_n_jw', 2070), ('hn_reldiff', 2051), ('rf_n_tsort', 1956), ('at_idf_match', 1946), ('rf_a_partial', 1774), ('hn_signdiff', 1612), ('nt_wjacc', 1586), ('rf_n_ratio', 1577), ('lg_exact', 1524), ('lg_ne', 1453), ('rf_g_ratio', 1431), ('at_max_idf_eun', 1357), ('rf_g_partial', 1305), ('at_wjacc', 1241), ('lg_nq', 1237), ('rf_n_tset', 1236), ('rf_a_tset', 1216), ('legal_eq', 1192), ('na_max_ratio_qun', 1150), ('hn_absdiff', 1018), ('rf_n_partial', 935), ('ret_rel_all', 881), ('u_q_dups', 815), ('bh_min_same', 799), ('bh_max_up', 767), ('ret_r_addr', 719), ('at_frac_q', 699), ('nt_idf_qun', 682), ('u_q_s1_same_name', 677), ('u_s1_same_name', 670), ('an_eun', 613), ('at_idf_qun', 463), ('at_max_idf_qun', 417), ('lg_q_subset', 407), ('bh_max_nohn', 382), ('u_s1_same_addr', 335), ('ret_rel_addr', 319), ('nt_nq', 312), ('rf_st_ratio', 289), ('hn_indel', 287), ('hn_lendiff', 231), ('nt_first_match', 225), ('an_qun', 225), ('hn_lev', 209), ('rf_st_tset', 200), ('an_match', 195), ('rf_st_jw', 184), ('state_eq', 161), ('is_india', 152), ('mutual', 142), ('hn_last_eq', 93), ('hn_subseq', 77), ('nt_max_idf_qun', 51), ('q_indic', 27)]
+17:32:43   band V pairs AUC stage2 pf: 0.9380
+17:32:43   band V pairs AUC CE logit: 0.9204
+17:32:43   band V pairs AUC stacker: 0.9665
+17:32:49 [plain stage-2 (v4)] p>=0.6:0.98960  p>=0.65:0.98973  p>=0.7:0.98975  p>=0.75:0.98974  p>=0.8:0.98963  p>=0.85:0.98943  p>=0.9:0.98889  pa>=0.6:0.98980  pa>=0.65:0.98984  pa>=0.7:0.98982  pa>=0.75:0.98978  pa>=0.8:0.98964  pa>=0.85:0.98942  pa>=0.9:0.98886
+17:32:49 [plain stage-2 (v4)] best ('pa', 0.65) = 0.98984   (p>=0.8: 0.98963, pa>=0.8: 0.98964)
+17:32:55 [plain stacked] p>=0.6:0.99151  p>=0.65:0.99164  p>=0.7:0.99174  p>=0.75:0.99173  p>=0.8:0.99168  p>=0.85:0.99158  p>=0.9:0.99138  pa>=0.6:0.99157  pa>=0.65:0.99170  pa>=0.7:0.99175  pa>=0.75:0.99171  pa>=0.8:0.99164  pa>=0.85:0.99153  pa>=0.9:0.99135
+17:32:55 [plain stacked] best ('pa', 0.7) = 0.99175   (p>=0.8: 0.99168, pa>=0.8: 0.99164)
+17:33:21 augmented: 1195738 band pairs with a CE logit, 23976 band pairs without (keep stage 2)
+17:33:25 [augmented stage-2 (v4)] p>=0.6:0.98802  p>=0.65:0.98830  p>=0.7:0.98847  p>=0.75:0.98862  p>=0.8:0.98869  p>=0.85:0.98866  p>=0.9:0.98828  pa>=0.6:0.98822  pa>=0.65:0.98841  pa>=0.7:0.98854  pa>=0.75:0.98866  pa>=0.8:0.98871  pa>=0.85:0.98865  pa>=0.9:0.98825
+17:33:25 [augmented stage-2 (v4)] best ('pa', 0.8) = 0.98871   (p>=0.8: 0.98869, pa>=0.8: 0.98871)
+17:33:29 [augmented stacked] p>=0.6:0.99092  p>=0.65:0.99111  p>=0.7:0.99126  p>=0.75:0.99129  p>=0.8:0.99130  p>=0.85:0.99125  p>=0.9:0.99111  pa>=0.6:0.99100  pa>=0.65:0.99118  pa>=0.7:0.99128  pa>=0.75:0.99128  pa>=0.8:0.99126  pa>=0.85:0.99120  pa>=0.9:0.99108
+17:33:29 [augmented stacked] best ('p', 0.8) = 0.99130   (p>=0.8: 0.99130, pa>=0.8: 0.99126)
+17:33:29 stacker decision: {'rule': 'p', 'param': 0.8, 'f05_augmented': 0.9913027247977582, 'f05_plain': 0.9916835587745274, 'v4_plain_p08': 0.9896259425373158, 'v4_aug_p08': 0.9886921984108}

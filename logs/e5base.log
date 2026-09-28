@@ -1,0 +1,145 @@
+16:44:37 train fitb: 1665941 band pairs (0.002 < p1 < 0.998) + 600000 confident pairs, 0.411 true
+[..] tokenise train: 1349115 S1 texts, 1532960 record texts
+16:45:51   e: 1349115 texts, mean 26.4 tokens, truncated 0.0010
+16:46:36   q: 1532960 texts, mean 22.4 tokens, truncated 0.0008
+[ok] tokenise train: 1349115 S1 texts, 1532960 record texts  (96.5s)
+[..] tokenise test: 602988 S1 texts, 517296 record texts
+16:46:58   e: 602988 texts, mean 28.6 tokens, truncated 0.0014
+16:47:12   q: 517296 texts, mean 21.4 tokens, truncated 0.0007
+[ok] tokenise test: 602988 S1 texts, 517296 record texts  (36.3s)
+16:47:18 GPU NVIDIA RTX PRO 4000 Blackwell: free 22.54 / 23.89 GB, cap 0.90
+16:47:19 CE A: 1129320 pairs (0.411 true), 9311 steps, mean length 49.2
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 9311.96it/s]
+[transformers] [1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: D:\er_work\hf\multilingual-e5-base
+Key                        | Status     | 
+---------------------------+------------+-
+pooler.dense.weight        | UNEXPECTED | 
+pooler.dense.bias          | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+16:47:23 attention implementation: sdpa
+16:47:24   step 0/9311 loss 0.6728 lr 3.58e-07 0.0 min, eta 155.0 min, gpu peak 2.94 GB
+16:47:46   step 250/9311 loss 0.4273 lr 4.52e-05 0.4 min, eta 13.3 min, gpu peak 4.70 GB
+16:48:06   step 500/9311 loss 0.3688 lr 4.88e-05 0.7 min, eta 12.5 min, gpu peak 4.70 GB
+16:48:27   step 750/9311 loss 0.3065 lr 4.74e-05 1.1 min, eta 12.1 min, gpu peak 4.70 GB
+16:48:49   step 1000/9311 loss 0.2936 lr 4.60e-05 1.4 min, eta 11.8 min, gpu peak 4.70 GB
+16:49:10   step 1250/9311 loss 0.2648 lr 4.46e-05 1.8 min, eta 11.4 min, gpu peak 4.70 GB
+16:49:31   step 1500/9311 loss 0.2643 lr 4.32e-05 2.1 min, eta 11.1 min, gpu peak 4.70 GB
+16:49:54   step 1750/9311 loss 0.2441 lr 4.19e-05 2.5 min, eta 10.8 min, gpu peak 4.70 GB
+16:50:15   step 2000/9311 loss 0.2395 lr 4.05e-05 2.9 min, eta 10.4 min, gpu peak 4.70 GB
+16:50:37   step 2250/9311 loss 0.2216 lr 3.91e-05 3.2 min, eta 10.1 min, gpu peak 4.70 GB
+16:50:58   step 2500/9311 loss 0.2340 lr 3.77e-05 3.6 min, eta 9.7 min, gpu peak 4.70 GB
+16:51:19   step 2750/9311 loss 0.2294 lr 3.63e-05 3.9 min, eta 9.4 min, gpu peak 4.70 GB
+16:51:40   step 3000/9311 loss 0.2392 lr 3.49e-05 4.3 min, eta 9.0 min, gpu peak 4.70 GB
+16:52:01   step 3250/9311 loss 0.2349 lr 3.35e-05 4.6 min, eta 8.6 min, gpu peak 4.70 GB
+16:52:22   step 3500/9311 loss 0.2129 lr 3.22e-05 5.0 min, eta 8.3 min, gpu peak 4.70 GB
+16:52:43   step 3750/9311 loss 0.2053 lr 3.08e-05 5.3 min, eta 7.9 min, gpu peak 4.70 GB
+16:53:04   step 4000/9311 loss 0.2229 lr 2.94e-05 5.7 min, eta 7.5 min, gpu peak 4.70 GB
+16:53:25   step 4250/9311 loss 0.2106 lr 2.80e-05 6.0 min, eta 7.2 min, gpu peak 4.70 GB
+16:53:46   step 4500/9311 loss 0.1833 lr 2.66e-05 6.4 min, eta 6.8 min, gpu peak 4.70 GB
+16:54:07   step 4750/9311 loss 0.2015 lr 2.52e-05 6.7 min, eta 6.5 min, gpu peak 4.70 GB
+16:54:28   step 5000/9311 loss 0.1957 lr 2.39e-05 7.1 min, eta 6.1 min, gpu peak 4.70 GB
+16:54:49   step 5250/9311 loss 0.1811 lr 2.25e-05 7.4 min, eta 5.7 min, gpu peak 4.70 GB
+16:55:11   step 5500/9311 loss 0.1916 lr 2.11e-05 7.8 min, eta 5.4 min, gpu peak 4.70 GB
+16:55:32   step 5750/9311 loss 0.1714 lr 1.97e-05 8.1 min, eta 5.0 min, gpu peak 4.70 GB
+16:55:53   step 6000/9311 loss 0.1939 lr 1.83e-05 8.5 min, eta 4.7 min, gpu peak 4.70 GB
+16:56:14   step 6250/9311 loss 0.1886 lr 1.69e-05 8.8 min, eta 4.3 min, gpu peak 4.70 GB
+16:56:36   step 6500/9311 loss 0.1821 lr 1.56e-05 9.2 min, eta 4.0 min, gpu peak 4.70 GB
+16:56:57   step 6750/9311 loss 0.1954 lr 1.42e-05 9.6 min, eta 3.6 min, gpu peak 4.70 GB
+16:57:19   step 7000/9311 loss 0.1674 lr 1.28e-05 9.9 min, eta 3.3 min, gpu peak 4.70 GB
+16:57:40   step 7250/9311 loss 0.1803 lr 1.14e-05 10.3 min, eta 2.9 min, gpu peak 4.70 GB
+16:58:01   step 7500/9311 loss 0.1884 lr 1.00e-05 10.6 min, eta 2.6 min, gpu peak 4.70 GB
+16:58:22   step 7750/9311 loss 0.1653 lr 8.64e-06 11.0 min, eta 2.2 min, gpu peak 4.70 GB
+16:58:43   step 8000/9311 loss 0.1815 lr 7.25e-06 11.3 min, eta 1.9 min, gpu peak 4.70 GB
+16:59:05   step 8250/9311 loss 0.1761 lr 5.87e-06 11.7 min, eta 1.5 min, gpu peak 4.70 GB
+16:59:26   step 8500/9311 loss 0.1702 lr 4.48e-06 12.0 min, eta 1.1 min, gpu peak 4.70 GB
+16:59:47   step 8750/9311 loss 0.1593 lr 3.10e-06 12.4 min, eta 0.8 min, gpu peak 4.70 GB
+17:00:08   step 9000/9311 loss 0.1768 lr 1.72e-06 12.7 min, eta 0.4 min, gpu peak 4.70 GB
+17:00:30   step 9250/9311 loss 0.1687 lr 3.32e-07 13.1 min, eta 0.1 min, gpu peak 4.70 GB
+17:00:35   step 9310/9311 loss 0.1672 lr 0.00e+00 13.2 min, eta 0.0 min, gpu peak 4.70 GB
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.39s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.39s/it]
+17:00:38 saved D:\er_work\models\ce_Ab (13.2 min)
+17:00:43 GPU NVIDIA RTX PRO 4000 Blackwell: free 22.54 / 23.89 GB, cap 0.90
+17:00:44 CE B: 1136621 pairs (0.411 true), 9364 steps, mean length 49.2
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 7539.31it/s]
+[transformers] [1mXLMRobertaForSequenceClassification LOAD REPORT[0m from: D:\er_work\hf\multilingual-e5-base
+Key                        | Status     | 
+---------------------------+------------+-
+pooler.dense.weight        | UNEXPECTED | 
+pooler.dense.bias          | UNEXPECTED | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+17:00:48 attention implementation: sdpa
+17:00:49   step 0/9364 loss 0.6922 lr 3.57e-07 0.0 min, eta 121.0 min, gpu peak 3.03 GB
+17:01:10   step 250/9364 loss 0.4435 lr 4.50e-05 0.4 min, eta 13.0 min, gpu peak 4.69 GB
+17:01:31   step 500/9364 loss 0.3604 lr 4.88e-05 0.7 min, eta 12.6 min, gpu peak 4.69 GB
+17:01:53   step 750/9364 loss 0.3001 lr 4.74e-05 1.1 min, eta 12.3 min, gpu peak 4.69 GB
+17:02:15   step 1000/9364 loss 0.2808 lr 4.60e-05 1.4 min, eta 12.0 min, gpu peak 4.69 GB
+17:02:36   step 1250/9364 loss 0.2675 lr 4.47e-05 1.8 min, eta 11.7 min, gpu peak 4.69 GB
+17:02:57   step 1500/9364 loss 0.2553 lr 4.33e-05 2.2 min, eta 11.3 min, gpu peak 4.69 GB
+17:03:19   step 1750/9364 loss 0.2517 lr 4.19e-05 2.5 min, eta 11.0 min, gpu peak 4.69 GB
+17:03:43   step 2000/9364 loss 0.2511 lr 4.05e-05 2.9 min, eta 10.7 min, gpu peak 4.69 GB
+17:04:06   step 2250/9364 loss 0.2381 lr 3.92e-05 3.3 min, eta 10.4 min, gpu peak 4.69 GB
+17:04:31   step 2500/9364 loss 0.2320 lr 3.78e-05 3.7 min, eta 10.2 min, gpu peak 4.69 GB
+17:04:55   step 2750/9364 loss 0.2204 lr 3.64e-05 4.1 min, eta 9.9 min, gpu peak 4.69 GB
+17:05:21   step 3000/9364 loss 0.2167 lr 3.50e-05 4.5 min, eta 9.6 min, gpu peak 4.69 GB
+17:05:46   step 3250/9364 loss 0.2086 lr 3.36e-05 5.0 min, eta 9.3 min, gpu peak 4.69 GB
+17:06:11   step 3500/9364 loss 0.2050 lr 3.23e-05 5.4 min, eta 9.0 min, gpu peak 4.69 GB
+17:06:37   step 3750/9364 loss 0.2005 lr 3.09e-05 5.8 min, eta 8.7 min, gpu peak 4.69 GB
+17:07:03   step 4000/9364 loss 0.2076 lr 2.95e-05 6.2 min, eta 8.4 min, gpu peak 4.69 GB
+17:07:29   step 4250/9364 loss 0.2020 lr 2.81e-05 6.7 min, eta 8.0 min, gpu peak 4.69 GB
+17:07:54   step 4500/9364 loss 0.1970 lr 2.68e-05 7.1 min, eta 7.7 min, gpu peak 4.69 GB
+17:08:19   step 4750/9364 loss 0.2116 lr 2.54e-05 7.5 min, eta 7.3 min, gpu peak 4.69 GB
+17:08:44   step 5000/9364 loss 0.1947 lr 2.40e-05 7.9 min, eta 6.9 min, gpu peak 4.69 GB
+17:09:10   step 5250/9364 loss 0.1908 lr 2.26e-05 8.4 min, eta 6.5 min, gpu peak 4.69 GB
+17:09:35   step 5500/9364 loss 0.2071 lr 2.13e-05 8.8 min, eta 6.2 min, gpu peak 4.69 GB
+17:10:00   step 5750/9364 loss 0.1919 lr 1.99e-05 9.2 min, eta 5.8 min, gpu peak 4.69 GB
+17:10:25   step 6000/9364 loss 0.1866 lr 1.85e-05 9.6 min, eta 5.4 min, gpu peak 4.69 GB
+17:10:51   step 6250/9364 loss 0.1861 lr 1.71e-05 10.0 min, eta 5.0 min, gpu peak 4.69 GB
+17:11:15   step 6500/9364 loss 0.1902 lr 1.58e-05 10.5 min, eta 4.6 min, gpu peak 4.69 GB
+17:11:41   step 6750/9364 loss 0.1757 lr 1.44e-05 10.9 min, eta 4.2 min, gpu peak 4.69 GB
+17:12:06   step 7000/9364 loss 0.2218 lr 1.30e-05 11.3 min, eta 3.8 min, gpu peak 4.69 GB
+17:12:31   step 7250/9364 loss 0.1894 lr 1.16e-05 11.7 min, eta 3.4 min, gpu peak 4.69 GB
+17:12:56   step 7500/9364 loss 0.1840 lr 1.03e-05 12.1 min, eta 3.0 min, gpu peak 4.69 GB
+17:13:21   step 7750/9364 loss 0.1827 lr 8.88e-06 12.6 min, eta 2.6 min, gpu peak 4.69 GB
+17:13:47   step 8000/9364 loss 0.1743 lr 7.50e-06 13.0 min, eta 2.2 min, gpu peak 4.69 GB
+17:14:12   step 8250/9364 loss 0.1719 lr 6.13e-06 13.4 min, eta 1.8 min, gpu peak 4.69 GB
+17:14:37   step 8500/9364 loss 0.1632 lr 4.75e-06 13.8 min, eta 1.4 min, gpu peak 4.69 GB
+17:15:03   step 8750/9364 loss 0.1606 lr 3.37e-06 14.2 min, eta 1.0 min, gpu peak 4.69 GB
+17:15:28   step 9000/9364 loss 0.1829 lr 2.00e-06 14.7 min, eta 0.6 min, gpu peak 4.69 GB
+17:15:53   step 9250/9364 loss 0.1763 lr 6.22e-07 15.1 min, eta 0.2 min, gpu peak 4.69 GB
+17:16:04   step 9363/9364 loss 0.1833 lr 0.00e+00 15.3 min, eta 0.0 min, gpu peak 4.69 GB
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:04<00:00,  4.59s/it]Writing model shards: 100%|██████████| 1/1 [00:04<00:00,  4.59s/it]
+17:16:09 saved D:\er_work\models\ce_Bb (15.3 min)
+17:16:21 GPU NVIDIA RTX PRO 4000 Blackwell: free 22.54 / 23.89 GB, cap 0.90
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:   4%|▍         | 9/201 [00:00<00:03, 61.96it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 1231.29it/s]
+17:16:29 attention implementation: sdpa
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:   4%|▍         | 9/201 [00:00<00:02, 83.11it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 1617.29it/s]
+17:16:30 attention implementation: sdpa
+[..] score validation pairs: 567457 by M_A, 565480 by M_B
+17:16:36     batch 0/593 0.0 min
+17:17:51     batch 500/593 1.3 min
+17:18:10     batch 0/591 0.0 min
+17:19:25     batch 500/591 1.3 min
+[ok] score validation pairs: 567457 by M_A, 565480 by M_B  (189.5s)
+[..] score test band: 943299 pairs x 2 models
+17:19:46     batch 0/1053 0.0 min
+17:20:56     batch 500/1053 1.2 min
+17:22:31     batch 1000/1053 2.8 min
+17:22:42     batch 0/1053 0.0 min
+17:23:52     batch 500/1053 1.2 min
+17:25:28     batch 1000/1053 2.8 min
+[ok] score test band: 943299 pairs x 2 models  (353.5s)
+E5BASE_DONE

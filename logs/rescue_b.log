@@ -1,0 +1,81 @@
+17:36:13 train: 82417 of 11276235 rescue pairs pass the pre-filter
+17:36:23 GPU NVIDIA RTX PRO 4000 Blackwell: free 22.54 / 23.89 GB, cap 0.90
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 2218.38it/s]
+17:36:24 attention implementation: sdpa
+[..] train: CE A on 49270 rescue pairs
+17:36:25     batch 0/118 0.0 min
+[ok] train: CE A on 49270 rescue pairs  (19.8s)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:   4%|▍         | 9/201 [00:00<00:02, 71.73it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 1494.65it/s]
+17:36:45 attention implementation: sdpa
+[..] train: CE B on 49491 rescue pairs
+17:36:46     batch 0/118 0.0 min
+[ok] train: CE B on 49491 rescue pairs  (19.9s)
+17:38:11 test: 84425 of 14349880 rescue pairs pass the pre-filter
+17:38:23 GPU NVIDIA RTX PRO 4000 Blackwell: free 22.54 / 23.89 GB, cap 0.90
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:   4%|▍         | 9/201 [00:00<00:02, 80.00it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 1667.91it/s]
+17:38:24 attention implementation: sdpa
+[..] test: CE A on 84425 rescue pairs
+17:38:25     batch 0/211 0.0 min
+[ok] test: CE A on 84425 rescue pairs  (35.3s)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 2061.46it/s]
+17:39:00 attention implementation: sdpa
+[..] test: CE B on 84425 rescue pairs
+17:39:01     batch 0/211 0.0 min
+[ok] test: CE B on 84425 rescue pairs  (34.6s)
+17:41:31 train: 466350 of 26161741 rescue pairs pass the pre-filter
+17:41:48 GPU NVIDIA RTX PRO 4000 Blackwell: free 22.54 / 23.89 GB, cap 0.90
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:   4%|▍         | 9/201 [00:00<00:02, 85.65it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 1731.62it/s]
+17:41:49 attention implementation: sdpa
+[..] train: CE A on 280068 rescue pairs
+17:41:50     batch 0/462 0.0 min
+[ok] train: CE A on 280068 rescue pairs  (75.5s)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:  93%|█████████▎| 186/201 [00:00<00:00, 1820.22it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 1965.04it/s]
+17:43:05 attention implementation: sdpa
+[..] train: CE B on 278279 rescue pairs
+17:43:06     batch 0/459 0.0 min
+[ok] train: CE B on 278279 rescue pairs  (74.9s)
+17:46:56 test: 312347 of 32182191 rescue pairs pass the pre-filter
+17:47:22 GPU NVIDIA RTX PRO 4000 Blackwell: free 22.54 / 23.89 GB, cap 0.90
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 2138.63it/s]
+17:47:23 attention implementation: sdpa
+[..] test: CE A on 312347 rescue pairs
+17:47:25     batch 0/570 0.0 min
+17:48:46     batch 500/570 1.4 min
+[ok] test: CE A on 312347 rescue pairs  (93.7s)
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:  84%|████████▎ | 168/201 [00:00<00:00, 1668.19it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 1968.76it/s]
+17:48:57 attention implementation: sdpa
+[..] test: CE B on 312347 rescue pairs
+17:48:58     batch 0/570 0.0 min
+17:50:19     batch 500/570 1.3 min
+[ok] test: CE B on 312347 rescue pairs  (92.2s)
+17:50:38 rescue importance: [('ceb', 148329), ('ce', 39567), ('cos_gap', 9451), ('ceb_gap', 8441), ('p_exist', 5829), ('cos_next', 5564), ('cos', 4254), ('nts', 4148), ('ce_gap', 3683), ('nr', 3550), ('ats', 3433), ('npr', 2782), ('q_no_hn', 1021), ('cos_rank', 424), ('num_shared', 397), ('ce_rank', 286), ('hn_eq', 251), ('ceb_rank', 113)]
+17:50:41 V rescue thr 0.6: +2360 links (2203 true), F0.5 0.99170 -> 0.99209 (+0.00040)
+17:50:41 V rescue thr 0.7: +2248 links (2148 true), F0.5 0.99170 -> 0.99210 (+0.00041)
+17:50:42 V rescue thr 0.8: +2144 links (2067 true), F0.5 0.99170 -> 0.99210 (+0.00041)
+17:50:42 V rescue thr 0.9: +1942 links (1903 true), F0.5 0.99170 -> 0.99209 (+0.00039)
+17:50:42 V rescue thr 0.95: +1730 links (1710 true), F0.5 0.99170 -> 0.99206 (+0.00037)
+17:50:44 test rescue: 84425 scored pairs, records with best prob >= 0.8: 7612
+17:50:56 rescue2 importance: [('ceb', 222412), ('ce', 66627), ('ceb_gap', 32161), ('cos_gap', 20215), ('p_exist', 17369), ('ce_gap', 16527), ('cos_next', 14112), ('cos', 11306), ('nr', 9204), ('nts', 6557), ('cos_rank', 4883), ('ce_rank', 4318), ('ceb_rank', 4288), ('npr', 4266), ('k_name', 4059), ('k_name_legal', 3561), ('ats', 2594), ('q_no_hn', 2005), ('legal_eq', 693), ('num_shared', 302), ('hn_eq', 124), ('name_eq', 85), ('q_no_addr', 40), ('unique_nl', 0)]
+17:50:59 V rescue2 [all] thr 0.6: +3112 links (2910 true), F0.5 0.99170 -> 0.99221 (+0.00051)
+17:51:00 V rescue2 [all] thr 0.7: +2875 links (2757 true), F0.5 0.99170 -> 0.99222 (+0.00053)
+17:51:00 V rescue2 [all] thr 0.75: +2769 links (2666 true), F0.5 0.99170 -> 0.99221 (+0.00051)
+17:51:00 V rescue2 [all] thr 0.8: +2634 links (2557 true), F0.5 0.99170 -> 0.99219 (+0.00050)
+17:51:01 V rescue2 [all] thr 0.85: +2474 links (2418 true), F0.5 0.99170 -> 0.99218 (+0.00048)
+17:51:01 V rescue2 [all] thr 0.9: +2272 links (2237 true), F0.5 0.99170 -> 0.99216 (+0.00047)
+17:51:01 V rescue2 [all] thr 0.95: +1947 links (1932 true), F0.5 0.99170 -> 0.99210 (+0.00041)
+17:51:02 V rescue2 [with address] thr 0.6: +2261 links (2153 true), F0.5 0.99170 -> 0.99211 (+0.00042)
+17:51:02 V rescue2 [with address] thr 0.7: +2160 links (2090 true), F0.5 0.99170 -> 0.99212 (+0.00043)
+17:51:02 V rescue2 [with address] thr 0.75: +2117 links (2052 true), F0.5 0.99170 -> 0.99211 (+0.00042)
+17:51:03 V rescue2 [with address] thr 0.8: +2046 links (1995 true), F0.5 0.99170 -> 0.99210 (+0.00040)
+17:51:03 V rescue2 [with address] thr 0.85: +1955 links (1920 true), F0.5 0.99170 -> 0.99209 (+0.00040)
+17:51:03 V rescue2 [with address] thr 0.9: +1827 links (1804 true), F0.5 0.99170 -> 0.99208 (+0.00039)
+17:51:03 V rescue2 [with address] thr 0.95: +1628 links (1618 true), F0.5 0.99170 -> 0.99205 (+0.00035)
+17:51:04 V rescue2 [without address] thr 0.6: +851 links (757 true), F0.5 0.99170 -> 0.99179 (+0.00009)
+17:51:04 V rescue2 [without address] thr 0.7: +715 links (667 true), F0.5 0.99170 -> 0.99180 (+0.00010)
+17:51:04 V rescue2 [without address] thr 0.75: +652 links (614 true), F0.5 0.99170 -> 0.99179 (+0.00009)
+17:51:05 V rescue2 [without address] thr 0.8: +588 links (562 true), F0.5 0.99170 -> 0.99179 (+0.00010)
+17:51:05 V rescue2 [without address] thr 0.85: +519 links (498 true), F0.5 0.99170 -> 0.99178 (+0.00009)
+17:51:05 V rescue2 [without address] thr 0.9: +445 links (433 true), F0.5 0.99170 -> 0.99178 (+0.00008)
+17:51:06 V rescue2 [without address] thr 0.95: +319 links (314 true), F0.5 0.99170 -> 0.99176 (+0.00006)
+17:51:10 test rescue2: 312347 scored pairs, records with best prob >= 0.8: 8807 (without address 1447)
+RESCUE_B_DONE

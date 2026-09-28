@@ -1,0 +1,13 @@
+[..] stage-1 A+B: 10886641 train rows
+Training until validation scores don't improve for 100 rounds
+[500]	valid_0's binary_logloss: 0.0297471
+[1000]	valid_0's binary_logloss: 0.0289658
+[1500]	valid_0's binary_logloss: 0.0286432
+[2000]	valid_0's binary_logloss: 0.0284938
+[2500]	valid_0's binary_logloss: 0.0284246
+Early stopping, best iteration is:
+[2819]	valid_0's binary_logloss: 0.0284034
+[ok] stage-1 A+B: 10886641 train rows  (1496.8s)
+17:32:44 A only (40%)                     V pairs AUC 0.99938  logloss 0.02958  stage-1 F0.5 0.98795
+17:32:49 A/B average (current, 2 x 40%)   V pairs AUC 0.99941  logloss 0.02905  stage-1 F0.5 0.98806
+17:32:55 A+B model (80%)                  V pairs AUC 0.99942  logloss 0.02864  stage-1 F0.5 0.98829
