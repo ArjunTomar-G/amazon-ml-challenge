@@ -83,8 +83,12 @@ Every step persists its results, so a run can resume with `--from <step>`. The s
 
 ## Output files and reproducibility
 
-- The output TSVs (98 MB and 230 MB) and the trained weights (about 9 GB) are not in git. They are in the
-  team's submission zip; the v13 `matching_results.tsv` has MD5 `00e6fd366ec819dff43810d2440e6117`.
+- The output TSVs (98 MB and 230 MB) and the trained weights (about 8 GB) are too large for git. They are
+  attached to the release
+  [`best-approach-v13`](https://github.com/ArjunTomar-G/amazon-ml-challenge/releases/tag/best-approach-v13):
+  both TSVs (the v13 `matching_results.tsv` has MD5 `00e6fd366ec819dff43810d2440e6117`), the LightGBM models, the
+  fine-tuned e5-small / e5-base / e5-large cross-encoders and the rescue retrievers, with SHA-256 checksums.
+  Each zip unpacks to `models/...` as in the pipeline's work dir.
 - The v13 file was built as deltas on the team's scored v10c file (`src/build_v11.py`, then
   `src/build_v13.py`), so each change is measured apart from retraining noise. The exact commands are in the
   code README.
